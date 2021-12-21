@@ -18,3 +18,7 @@ variable default_branch {
 variable accountnumber {
   default = "123456789"  
 }
+
+variable mcserverbackups {
+  default = "mc-server-backups"
+}
