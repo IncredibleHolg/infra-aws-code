@@ -1,0 +1,5 @@
+project_name = "shared-infra"
+region = "eu-central-1"
+website_bucket_name = "public-website"
+logs_bucket_name = "centrallogs"
+accountnumber = "433352544266"
