@@ -55,3 +55,22 @@ resource "aws_s3_bucket" "s3_bucket_logs" {
     "installtype" = "terraform"
   }
 }
+
+resource "aws_s3_bucket" "s3_vanilla18" {
+  bucket = format("%s-%s",var.s3_vanilla18,var.accountnumber)
+  acl    = "private"
+  versioning {
+    enabled = false
+  }
+  website {
+    index_document = "index.html"
+  }
+
+  tags = {
+    project = var.project_name
+    "installer"   = "hdunkel"
+    "installtype" = "terraform"
+  }
+}
+
+# aws s3 sync --delete  map s3://vanilla18-433352544266/

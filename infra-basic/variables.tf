@@ -22,3 +22,8 @@ variable accountnumber {
 variable mcserverbackups {
   default = "mc-server-backups"
 }
+
+variable s3_vanilla18 {
+  default = "vanilla18"
+}
+
