@@ -1,3 +1,6 @@
+# Starting & Stopping 
+# aws ec2 stop-instances --instance-ids xxxx
+# aws ec2 start-instances --instance-ids xxx
 resource "aws_instance" "overviewerworker" {
     ami = "ami-05d34d340fb1d89e5"
     #instance_type = "t2.micro"
