@@ -1,7 +1,7 @@
 resource "aws_instance" "overviewerworker" {
     ami = "ami-05d34d340fb1d89e5"
     #instance_type = "t2.micro"
-    instance_type = "t2.xlarge"
+    instance_type = var.ec2_type
     iam_instance_profile = aws_iam_instance_profile.overviewerworker_profile.name
     tags = {
         "installer"   = "hdunkel"
@@ -34,17 +34,30 @@ resource "aws_security_group" "overviewerworker-sg-01" {
     ]
     ingress = [
         {
-        "cidr_blocks"= [
-            "0.0.0.0/0"
-        ],
-        "description"= "",
-        "from_port"= 22,
-        "ipv6_cidr_blocks"= [],
-        "prefix_list_ids"= [],
-        "protocol"= "tcp",
-        "security_groups"= [],
-        "self"= false,
-        "to_port"= 22
+            cidr_blocks = [
+                "0.0.0.0/0",
+            ]
+            description = "NFS for EFS"
+            from_port = 2049
+            ipv6_cidr_blocks = []
+            prefix_list_ids  = []
+            protocol = "tcp"
+            security_groups  = []
+            self             = false
+            to_port          = 2049
+        },
+        {
+            "cidr_blocks"= [
+                "0.0.0.0/0"
+            ],
+            "description"= "",
+            "from_port"= 22,
+            "ipv6_cidr_blocks"= [],
+            "prefix_list_ids"= [],
+            "protocol"= "tcp",
+            "security_groups"= [],
+            "self"= false,
+            "to_port"= 22
         }
     ]
     tags = {
@@ -81,6 +94,7 @@ resource "aws_iam_role" "overviewerworker_role" {
         })
     managed_policy_arns = [
         "arn:aws:iam::aws:policy/AmazonS3FullAccess",
+        "arn:aws:iam::aws:policy/AmazonElasticFileSystemClientFullAccess",
     ]
 
     tags = {

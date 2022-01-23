@@ -17,3 +17,9 @@ output "ec2_public_dns" {
   description = "Public DNS ec2 instance"
   value = aws_instance.overviewerworker.public_dns
 }
+output "minecraftstorage" {
+  description = "DNS of EFS Volume to hold data" 
+  value = aws_efs_file_system.minecraftstorage.dns_name
+}
+# file-system-id:/ efs-mount-point efs _netdev,tls,iam 0 0
+# file-system-id:/ /home/ec2-user/WRK efs _netdev,tls,iam 0 0
