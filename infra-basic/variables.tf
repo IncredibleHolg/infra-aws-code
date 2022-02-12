@@ -34,6 +34,9 @@ variable s3_mc_resources {
 # when not calculating: "t2.micro"
 # "t2.xlarge" is bursting, not suitable vor longer calculations
 # Better a "m" instance, check which is compatible, try m5.xlarge
+# variable ec2_type {
+#  default = "m5.xlarge"
+# }
 variable ec2_type {
-  default = "m5.xlarge"
+  default = "t2.micro"
 }
