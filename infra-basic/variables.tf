@@ -1,3 +1,9 @@
+locals{
+#   AWS defined
+  minecraft_map_policy_id =   "658327ea-f89d-4fab-a63d-7e88639e58f6"
+}
+
+
 variable "project_name" {}
 variable "region" {
   default     = "eu-central-1"
@@ -25,6 +31,10 @@ variable mcserverbackups {
 
 variable s3_vanilla18 {
   default = "vanilla18"
+}
+
+variable s3_haulaway {
+  default = "haulaway"
 }
 
 variable s3_mc_resources {

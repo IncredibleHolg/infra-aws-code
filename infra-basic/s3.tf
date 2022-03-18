@@ -50,11 +50,32 @@ resource "aws_s3_bucket" "s3_vanilla18" {
 
 # aws s3 sync --delete  map s3://vanilla18-433352544266/
 
+
+
 resource "aws_s3_bucket" "s3_mc_resources" {
   bucket = format("%s-%s",var.s3_mc_resources,var.accountnumber)
   acl    = "private"
   versioning {
     enabled = true
+  }
+  website {
+    index_document = "index.html"
+  }
+
+  tags = {
+    project = var.project_name
+    "installer"   = "hdunkel"
+    "installtype" = "terraform"
+  }
+}
+
+####
+# haulaway
+resource "aws_s3_bucket" "s3_haulaway" {
+  bucket = format("%s-%s",var.s3_haulaway,var.accountnumber)
+  acl    = "private"
+  versioning {
+    enabled = false
   }
   website {
     index_document = "index.html"

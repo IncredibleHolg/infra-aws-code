@@ -1,11 +1,7 @@
-# Imported cloudfront settings
+# Cloudfront settings
 
-locals{
-#   AWS defined
-  minecraft_map_policy_id =   "658327ea-f89d-4fab-a63d-7e88639e58f6"
-}
 
-resource "aws_cloudfront_distribution" "minecraf_tmap_distribution" {
+resource "aws_cloudfront_distribution" "minecraf_haulaway_distribution" {
 
     enabled = true
     is_ipv6_enabled = true
@@ -13,8 +9,8 @@ resource "aws_cloudfront_distribution" "minecraf_tmap_distribution" {
     default_root_object = "index.html"
 
    origin {
-    domain_name = aws_s3_bucket.s3_vanilla18.bucket_regional_domain_name
-    origin_id   = aws_s3_bucket.s3_vanilla18.bucket_regional_domain_name    
+    domain_name = aws_s3_bucket.s3_haulaway.bucket_regional_domain_name
+    origin_id   = aws_s3_bucket.s3_haulaway.bucket_regional_domain_name    
    }
 
 
@@ -25,7 +21,7 @@ resource "aws_cloudfront_distribution" "minecraf_tmap_distribution" {
     cache_policy_id   = local.minecraft_map_policy_id
     allowed_methods  = ["GET", "HEAD",]
     cached_methods   = ["GET", "HEAD"]
-    target_origin_id = aws_s3_bucket.s3_vanilla18.bucket_regional_domain_name
+    target_origin_id = aws_s3_bucket.s3_haulaway.bucket_regional_domain_name
     # not working with cache_policy
     # forwarded_values {
     #     query_string = false

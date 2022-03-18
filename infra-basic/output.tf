@@ -18,6 +18,11 @@ output "s3_vanilla18" {
   value       = aws_s3_bucket.s3_vanilla18.bucket_regional_domain_name
 }
 
+output "s3_haulaway" {
+  description = "S3 for haulaway map"
+  value       = aws_s3_bucket.s3_haulaway.bucket_regional_domain_name
+}
+
 
 output "s3_bucket_logs" {
   description = "repository_url"
