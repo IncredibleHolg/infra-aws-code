@@ -1,5 +1,14 @@
-# Imported cloudfront settings
+locals{
+  MC_VANILLA_DNS = "mc-vanilla.verdunkelbar-ng.de"
+  # Certificate for CF is in the us-east-1 region
+  # cannot be managed with Frankfurt login  
+  MC_VANILLA_CERT_ARN = "arn:aws:acm:us-east-1:433352544266:certificate/fe70f0e9-bea9-434f-a4ae-cfd5f689fb29"
+}
 
+
+
+
+# cloudfront settings
 
 resource "aws_cloudfront_distribution" "minecraf_tmap_distribution" {
 
@@ -7,10 +16,10 @@ resource "aws_cloudfront_distribution" "minecraf_tmap_distribution" {
     is_ipv6_enabled = true
     price_class = "PriceClass_100"
     default_root_object = "index.html"
-    aliases = ["mc-vanilla.verdunkelbar-ng.de",]
+    aliases = [local.MC_VANILLA_DNS,]
 
     viewer_certificate {
-      acm_certificate_arn            = "arn:aws:acm:us-east-1:433352544266:certificate/fe70f0e9-bea9-434f-a4ae-cfd5f689fb29"
+      acm_certificate_arn            = local.MC_VANILLA_CERT_ARN
       minimum_protocol_version       = "TLSv1.2_2021"
       ssl_support_method             = "sni-only"
     }
