@@ -37,9 +37,9 @@ resource "aws_s3_bucket" "s3_vanilla18" {
   versioning {
     enabled = false
   }
-  website {
-    index_document = "index.html"
-  }
+  # website {
+  #   index_document = "index.html"
+  # }
 
   tags = {
     project = var.project_name
