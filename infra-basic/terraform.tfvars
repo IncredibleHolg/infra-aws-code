@@ -9,6 +9,7 @@ default_branch = "main"
 mcserverbackups = "mc-server-backups"
 s3_haulaway = "haulaway"
 s3_mc_resources = "mc-resources"
+eks_dev_repository_01_name = "eks-dev-01"
 # when not calculating: "t2.micro"
 # "t2.xlarge" is bursting, not suitable vor longer calculations
 # Better a "m" instance, check which is compatible, try m5.xlarge
