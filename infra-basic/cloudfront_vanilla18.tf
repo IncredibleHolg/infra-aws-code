@@ -24,7 +24,6 @@ resource "aws_cloudfront_distribution" "minecraf_tmap_distribution" {
       ssl_support_method             = "sni-only"
     }
 
-
    origin {
     domain_name = aws_s3_bucket.s3_vanilla18.bucket_regional_domain_name
     origin_id   = aws_s3_bucket.s3_vanilla18.bucket_regional_domain_name    
@@ -57,6 +56,7 @@ resource "aws_cloudfront_distribution" "minecraf_tmap_distribution" {
       restriction_type = "none"
     }
   }
+
 }
 
 # Copy of AWS resource

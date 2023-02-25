@@ -4,3 +4,15 @@ website_bucket_name = "public-website"
 logs_bucket_name = "centrallogs"
 accountnumber = "433352544266"
 s3_vanilla18 = "vanilla18"
+eks_dev_repository_name = "eks-dev"
+default_branch = "main"
+mcserverbackups = "mc-server-backups"
+s3_haulaway = "haulaway"
+s3_mc_resources = "mc-resources"
+# when not calculating: "t2.micro"
+# "t2.xlarge" is bursting, not suitable vor longer calculations
+# Better a "m" instance, check which is compatible, try m5.xlarge
+# variable ec2_type {
+#  default = "m5.xlarge"
+# }
+ec2_type = "t2.micro"
