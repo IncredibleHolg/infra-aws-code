@@ -16,4 +16,6 @@ eks_dev_repository_01_name = "eks-dev-01"
 # variable ec2_type {
 #  default = "m5.xlarge"
 # }
+# lora storage
+s3_stdifstorage="stdifstorage"
 ec2_type = "t2.micro"

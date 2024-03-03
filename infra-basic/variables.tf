@@ -25,3 +25,5 @@ variable s3_mc_resources {}
 # }
 variable ec2_type {}
 
+# Lora storage
+variable "s3_stdifstorage" {}
