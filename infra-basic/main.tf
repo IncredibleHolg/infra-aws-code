@@ -7,7 +7,7 @@ locals {
 terraform {
   backend "s3" {
     bucket = "state-sync"
-    key = "terraform//private/infra-basic/terraform.tfstate"
+    key = "terraform/private/infra-basic/terraform.tfstate"
     region = "eu-central-1"
   }
   required_version = ">= 0.12.6"

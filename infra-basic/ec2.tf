@@ -6,7 +6,7 @@ resource "aws_instance" "overviewerworker" {
     #instance_type = "t2.micro"
     instance_type = var.ec2_type
     iam_instance_profile = aws_iam_instance_profile.overviewerworker_profile.name
-    # user_data_replace_on_change = true
+    user_data_replace_on_change = true
     tags = {
         "installer"   = "hdunkel"
         "installtype" = "terraform-imported"
