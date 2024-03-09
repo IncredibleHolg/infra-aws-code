@@ -15,6 +15,7 @@ variable accountnumber {}
 variable mcserverbackups {}
 variable s3_vanilla18 {}
 variable s3_haulaway {}
+variable s3_rendertest {}
 variable s3_mc_resources {}
 
 # when not calculating: "t2.micro"
