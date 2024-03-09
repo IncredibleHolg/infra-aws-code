@@ -45,3 +45,7 @@ output "minecraftstorage" {
 }
 # file-system-id:/ efs-mount-point efs _netdev,tls,iam 0 0
 # file-system-id:/ /home/ec2-user/WRK efs _netdev,tls,iam 0 0
+output "rendertest_s3" {
+  description = "s3 bucket"
+  value = aws_s3_bucket.s3_rendertest.bucket_regional_domain_name
+}
