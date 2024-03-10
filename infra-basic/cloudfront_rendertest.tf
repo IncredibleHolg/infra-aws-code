@@ -3,18 +3,32 @@
 
 resource "aws_cloudfront_distribution" "minecraf_rendertest_distribution" {
 
-    enabled = true
-    is_ipv6_enabled = true
-    price_class = "PriceClass_100"
-    default_root_object = "index.html"
+  enabled = true
+  is_ipv6_enabled = true
+  price_class = "PriceClass_100"
+  default_root_object = "index.html"
 
-   origin {
-    domain_name = aws_s3_bucket.s3_rendertest.bucket_regional_domain_name
-    origin_id   = aws_s3_bucket.s3_rendertest.bucket_regional_domain_name    
-   }
+  origin {
+  domain_name = aws_s3_bucket.s3_rendertest.bucket_regional_domain_name
+  origin_id   = aws_s3_bucket.s3_rendertest.bucket_regional_domain_name    
+  }
 
+  ordered_cache_behavior {
+    path_pattern = "/*.json"
+    allowed_methods  = [
+      "GET",
+      "HEAD",
+    ]
+    target_origin_id       = "rendertest-433352544266.s3.eu-central-1.amazonaws.com"
+    viewer_protocol_policy = "redirect-to-https"
+    cache_policy_id   = local.minecraft_map_policy_id
+    cached_methods = [
+      "GET",
+      "HEAD",
+    ]
+    compress = true
+  }
 
-   
 
   default_cache_behavior {
     compress = true
@@ -44,8 +58,6 @@ resource "aws_cloudfront_distribution" "minecraf_rendertest_distribution" {
   viewer_certificate {
     cloudfront_default_certificate = true
   }
-
-
 }
 
 # resource "aws_cloudfront_response_headers_policy" "minecraft_rendertest" {
