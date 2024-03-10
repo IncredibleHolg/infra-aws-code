@@ -19,7 +19,7 @@ resource "aws_cloudfront_distribution" "minecraf_rendertest_distribution" {
       "GET",
       "HEAD",
     ]
-    target_origin_id       = "rendertest-433352544266.s3.eu-central-1.amazonaws.com"
+    target_origin_id       = aws_s3_bucket.s3_rendertest.bucket_regional_domain_name
     viewer_protocol_policy = "redirect-to-https"
     cache_policy_id   = local.minecraft_map_policy_id
     cached_methods = [
