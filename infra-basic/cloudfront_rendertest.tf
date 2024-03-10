@@ -27,6 +27,10 @@ resource "aws_cloudfront_distribution" "minecraf_rendertest_distribution" {
       "HEAD",
     ]
     compress = true
+    function_association {
+      event_type   = "viewer-request"
+      function_arn = aws_cloudfront_function.json_reply_compressed.arn
+    }
   }
 
 
