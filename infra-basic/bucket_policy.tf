@@ -87,3 +87,33 @@ data "aws_iam_policy_document" "allow_public_access_s3_haulaway" {
   }
 
 }
+
+## s3_rendertest
+
+resource "aws_s3_bucket_policy" "allow_public_s3_rendertest" {
+    bucket = aws_s3_bucket.s3_rendertest.id
+    policy = data.aws_iam_policy_document.allow_public_access_s3_rendertest.json
+}
+
+
+data "aws_iam_policy_document" "allow_public_access_s3_rendertest" {
+  statement {
+
+    sid = "PublicReadGetObject01"
+      
+    principals {
+      type        = "*"
+      identifiers = ["*"]
+    }	
+    
+    actions = [
+      "s3:GetObject",
+      "s3:ListBucket",
+    ]
+    resources = [
+        aws_s3_bucket.s3_rendertest.arn,
+      "${aws_s3_bucket.s3_rendertest.arn}/*",
+    ]
+  }
+
+}

@@ -26,3 +26,10 @@ resource "aws_s3_bucket_website_configuration" "s3_rendertest" {
     suffix = "index.html"
   }
  }
+# Resource to avoid error "AccessControlListNotSupported: The bucket does not allow ACLs"
+resource "aws_s3_bucket_ownership_controls" "s3_rendertest" {
+  bucket = aws_s3_bucket.s3_rendertest.id
+  rule {
+    object_ownership = "BucketOwnerPreferred"
+  }
+}

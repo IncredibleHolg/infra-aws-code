@@ -48,22 +48,14 @@ resource "aws_cloudfront_distribution" "minecraf_rendertest_distribution" {
 
 }
 
-# Copy of AWS resource
-# resource "aws_cloudfront_cache_policy" "minecraft_map_policy"{
-#     name = "Managed-CachingOptimized"
-#     comment = "Default policy when CF compression is enabled"
-#     min_ttl = 1
-#     parameters_in_cache_key_and_forwarded_to_origin {
-#         enable_accept_encoding_brotli = true
-#         enable_accept_encoding_gzip   = true
-#         cookies_config {
-#             cookie_behavior = "none"
-#         }
-#         headers_config {
-#             header_behavior = "none"
-#         }
-#         query_strings_config {
-#             query_string_behavior = "none"
-#         }
+# resource "aws_cloudfront_response_headers_policy" "minecraft_rendertest" {
+#   name = "minecraft-rendertest-compression"
+
+#   custom_headers_config {
+#     items {
+#       header   = "X-Content-Encoding"
+#       override = true
+#       value    = "gzip"
 #     }
+#   }
 # }
