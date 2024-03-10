@@ -5,16 +5,9 @@ resource "aws_cloudfront_function" "json_reply_compressed" {
     publish = true
     code    = <<EOT
 function handler(event) {
-    // NOTE: This example function is for a viewer request event trigger.
-    // Choose viewer request for event trigger when you associate this function with a distribution.
-    var response = {
-        statusCode: 200,
-        statusDescription: 'OK',
-        headers: {
-            'cloudfront-functions': { value: 'generated-by-CloudFront-Functions' }
-        }
-    };
-    return response;
+    var request = event.request;
+    request.uri = request.uri + ".gz"
+    return request;
 }
 EOT
 }
