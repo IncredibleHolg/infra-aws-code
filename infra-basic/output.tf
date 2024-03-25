@@ -29,15 +29,15 @@ output "s3_bucket_logs" {
   value       = aws_s3_bucket.s3_bucket_logs.bucket_regional_domain_name
 
 }
-output "ec2_public_dns" {
-  description = "Public DNS ec2 instance"
-  value = aws_instance.overviewerworker.public_dns
-}
+# output "ec2_public_dns" {
+#   description = "Public DNS ec2 instance"
+#   value = aws_instance.overviewerworker.public_dns
+# }
 
-output "ec2_instance_id" {
-  description = "Instance ID"
-  value = aws_instance.overviewerworker.id
-}
+# output "ec2_instance_id" {
+#   description = "Instance ID"
+#   value = aws_instance.overviewerworker.id
+# }
 
 output "minecraftstorage" {
   description = "DNS of EFS Volume to hold data" 
