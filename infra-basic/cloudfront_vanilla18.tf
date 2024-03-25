@@ -29,6 +29,26 @@ resource "aws_cloudfront_distribution" "minecraf_tmap_distribution" {
     origin_id   = aws_s3_bucket.s3_vanilla18.bucket_regional_domain_name    
    }
 
+  ordered_cache_behavior {
+    path_pattern = "/*.json"
+    allowed_methods  = [
+      "GET",
+      "HEAD",
+    ]
+    target_origin_id       = aws_s3_bucket.s3_vanilla18.bucket_regional_domain_name
+    viewer_protocol_policy = "redirect-to-https"
+    cache_policy_id   = local.minecraft_map_policy_id
+    cached_methods = [
+      "GET",
+      "HEAD",
+    ]
+    compress = true
+    function_association {
+      event_type   = "viewer-request"
+      function_arn = aws_cloudfront_function.json_reply_compressed.arn
+    }
+  }
+
 
    
 
